@@ -3,6 +3,7 @@ export default `
         clearButton = wrapper.querySelector("[data-action=clear]"),
         saveButton = wrapper.querySelector("[data-action=save]"),
         canvas = wrapper.querySelector("canvas"),
+        footer = document.getElementById("signature-pad--footer"),
         signaturePad;
     
     // Adjust canvas coordinate space taking into account pixel ratio,
@@ -74,6 +75,10 @@ export default `
     function erase() {
       signaturePad.erase();
       window.ReactNativeWebView.postMessage("ERASE");
+    }
+
+    function showFooter(isVisible) {
+        footer.styles.display = isVisible ? "block" : "none";
     }
 
     function cropWhitespace(url) {

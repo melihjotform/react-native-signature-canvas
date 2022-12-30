@@ -54,6 +54,7 @@ const SignatureView = forwardRef(({
   trimWhitespace = false,
   webStyle = "",
   webviewContainerStyle = null,
+  footerDisplay = "block"
 }, ref) => {
   const [loading, setLoading] = useState(true);
   const webViewRef = useRef();
@@ -82,6 +83,7 @@ const SignatureView = forwardRef(({
     html = html.replace(/<%confirm%>/g, confirmText);
     html = html.replace(/<%clear%>/g, clearText);
     html = html.replace(/<%orientation%>/g, rotated);
+    html = html.replace(/<%footerDisplay%>/g, footerDisplay);
 
     return { html };
   }, [customHtml, autoClear, trimWhitespace, rotated, imageType, webStyle, descriptionText, confirmText, clearText, dataURL, bgSrc, bgWidth, bgHeight])
@@ -166,6 +168,11 @@ const SignatureView = forwardRef(({
     erase: () => {
       if (webViewRef.current) {
         webViewRef.current.injectJavaScript("erase();true;");
+      }
+    },
+    showFooter: (isVisible) => {
+      if(webViewRef.current) {
+        webViewRef.current.injectJavaScript("showFooter("+isVisible+");true;");
       }
     },
     changePenColor: (color) => {

@@ -159,7 +159,7 @@ export default (script) =>
         <canvas></canvas>
         <img style="position: absolute; top: 0; left: 0; pointer-events: none;" src=<%overlaySrc%> width=<%overlayWidth%> height=<%overlayHeight%> />
       </div>
-      <div class="m-signature-pad--footer">
+      <div id="signature-pad--footer" class="m-signature-pad--footer" style="display: <%footerDisplay%>">
         <button type="button" class="button clear" data-action="clear"><%clear%></button>
         <div class="description"><%description%></div>
         <button type="button" class="button save" data-action="save"><%confirm%></button>
